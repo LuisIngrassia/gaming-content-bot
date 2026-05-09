@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(move \"Audio generator.py\" \"3_audio/audio_generator.py\")",
+      "Bash(move \"Script generator.py\" \"2_script/script_generator.py\")",
+      "Bash(move \"Video generator.py\" \"4_video/video_generator.py\")",
+      "Bash(move \"Publisher.py\" \"5_publish/publisher.py\")",
+      "Bash(move \"Setup.md\" \"5_publish/SETUP.md\")",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Organizar estructura del proyecto: modules 1-6, requirements, env.example y archivos faltantes *)"
+    ]
+  }
+}

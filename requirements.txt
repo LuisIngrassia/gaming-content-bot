@@ -1,0 +1,38 @@
+# Scraper
+feedparser==6.0.11
+requests==2.31.0
+beautifulsoup4==4.12.3
+praw==7.7.1
+
+# Config y utils
+python-dotenv==1.0.0
+rich==13.7.0
+schedule==1.2.1
+
+# Generacion de guiones
+# (Groq usa requests, Ollama igual — sin dependencias extra)
+
+# Audio
+kokoro-onnx>=0.5.0
+soundfile>=0.12.1
+numpy>=1.24.0
+
+# Video (modulo 4)
+# ffmpeg-python==0.2.0  # se agrega en modulo 4
+# openai-whisper        # se agrega en modulo 4
+
+# Video
+ffmpeg-python>=0.2.0
+openai-whisper>=20231117
+
+# Publicacion
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.1.1
+google-auth-oauthlib>=1.1.0
+
+# Analytics
+# (sqlite3 viene con Python, sin dependencias extra)
+
+# Scheduler
+schedule>=1.2.1
+schedule>=1.2.1
