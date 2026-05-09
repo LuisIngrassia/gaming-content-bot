@@ -109,16 +109,20 @@ def call_groq(system: str, user: str) -> str | None:
             timeout=30,
         )
         res.raise_for_status()
-        return res.json()["choices"][0]["message"]["content"].strip()
+        data = res.json()
+        return data["choices"][0]["message"]["content"].strip()
 
     except requests.exceptions.HTTPError as e:
         if res.status_code == 429:
             console.print("[yellow]Groq rate limit alcanzado, usando Ollama...")
         else:
-            console.print(f"[red]Groq error {res.status_code}: {res.text[:200]}")
+            console.print(f"[red]Groq HTTP {res.status_code}")
+        return None
+    except (KeyError, IndexError) as e:
+        console.print(f"[red]Groq JSON parse error: {e}")
         return None
     except Exception as e:
-        console.print(f"[red]Groq error: {e}")
+        console.print(f"[red]Groq error: {str(e)[:100]}")
         return None
 
 

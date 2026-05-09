@@ -500,7 +500,7 @@ def process_batch(
 
     pending = []
     for f in scripts_dir.glob("script_*.json"):
-        with open(f) as fp:
+        with open(f, encoding="utf-8") as fp:
             data = json.load(fp)
         if data.get("video_path") and not data.get("published_at"):
             pending.append((f, data))
@@ -551,7 +551,7 @@ if __name__ == "__main__":
     if args and Path(args[0]).exists():
         # Es un archivo específico
         script_path = Path(args[0])
-        with open(script_path) as f:
+        with open(script_path, encoding="utf-8") as f:
             script_data = json.load(f)
         platforms = [a for a in args[1:] if a in known_platforms] or list(known_platforms)
         video_path = Path(script_data["video_path"])

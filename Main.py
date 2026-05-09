@@ -97,9 +97,11 @@ def run_pipeline(languages=None, platforms=None):
     # 4. Video
     console.rule("[cyan]4/5 Video")
     try:
-        results["video"] = len(gen_video())
+        videos = gen_video()
+        results["video"] = len(videos) if videos else 0
     except Exception as e:
         results["errors"].append(f"video: {e}")
+        console.print(f"[yellow]⚠ Video generation skipped: {type(e).__name__}")
 
     # 5. Publicar
     console.rule("[cyan]5/5 Publicando")

@@ -7,7 +7,20 @@
       "Bash(move \"Publisher.py\" \"5_publish/publisher.py\")",
       "Bash(move \"Setup.md\" \"5_publish/SETUP.md\")",
       "Bash(git add *)",
-      "Bash(git commit -m 'Organizar estructura del proyecto: modules 1-6, requirements, env.example y archivos faltantes *)"
+      "Bash(git commit -m 'Organizar estructura del proyecto: modules 1-6, requirements, env.example y archivos faltantes *)",
+      "PowerShell(gh auth *)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "Bash(git commit -m 'Implementar scraper: RSS feeds + Steam API *)",
+      "Bash(git commit -m 'Arreglar script generator para compatibilidad con scraper *)",
+      "Bash(python *)",
+      "Bash(git commit -m 'Actualizar modelo Groq: llama-3.1-70b descontinuado → mixtral-8x7b-32768 *)",
+      "Bash(git commit -m 'Usar modelo Groq llama-3.3-70b-versatile \\(mixtral descontinuado\\) *)",
+      "Bash(git commit -m 'Implementar Audio Generator y Video Generator *)",
+      "Bash(Get-ChildItem \"E:\\\\codes\\\\YT\\\\data\\\\audio\\\\*.wav\")",
+      "Bash(Measure-Object)",
+      "Bash(Select-Object -ExpandProperty Count)"
     ]
   }
 }
