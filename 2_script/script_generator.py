@@ -70,7 +70,7 @@ JSON puro, sin texto extra."""
 # ============================================
 
 def detect_content_type(news: dict) -> str:
-    text = (news.get("title", "") + " " + news.get("summary", "")).lower()
+    text = (news.get("title", "") + " " + news.get("description", "")).lower()
     if any(w in text for w in ["patch", "hotfix", "parche", "balance", "nerf", "buff"]):
         return "patch_note"
     if any(w in text for w in ["announced", "reveal", "anunciado", "new game", "nuevo juego", "release date"]):
@@ -163,7 +163,7 @@ def generate_script(news: dict, language: str = "es") -> dict | None:
     user_prompt = USER_PROMPT_TEMPLATE.format(
         language=lang_name,
         title=news.get("title", ""),
-        summary=news.get("summary", "")[:400],
+        summary=news.get("description", news.get("summary", ""))[:400],
         source=news.get("source", ""),
         content_type=content_type,
     )
@@ -224,7 +224,10 @@ def generate_script(news: dict, language: str = "es") -> dict | None:
 
 def process_news_batch(news_file: Path, languages: list = ["es", "en"]) -> list:
     with open(news_file, encoding="utf-8") as f:
-        news_list = json.load(f)
+        data = json.load(f)
+
+    # Extraer lista de noticias (el archivo puede ser dict o lista)
+    news_list = data.get("news", data) if isinstance(data, dict) else data
 
     console.rule(f"[bold cyan]Generando guiones — {len(news_list)} noticias")
     scripts = []
