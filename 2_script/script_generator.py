@@ -24,7 +24,8 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 GROQ_API_URL   = "https://api.groq.com/openai/v1/chat/completions"
 OLLAMA_API_URL = "http://localhost:11434/api/chat"
-GROQ_MODEL     = "llama-3.1-70b-versatile"
+# Modelos disponibles en Groq (llama-3.1-70b-versatile fue descontinuado)
+GROQ_MODEL     = "mixtral-8x7b-32768"  # Rápido y confiable
 OLLAMA_MODEL   = "llama3.1:8b"
 
 
@@ -111,11 +112,11 @@ def call_groq(system: str, user: str) -> str | None:
         res.raise_for_status()
         return res.json()["choices"][0]["message"]["content"].strip()
 
-    except requests.exceptions.HTTPError:
+    except requests.exceptions.HTTPError as e:
         if res.status_code == 429:
             console.print("[yellow]Groq rate limit alcanzado, usando Ollama...")
         else:
-            console.print(f"[red]Groq error {res.status_code}")
+            console.print(f"[red]Groq error {res.status_code}: {res.text[:200]}")
         return None
     except Exception as e:
         console.print(f"[red]Groq error: {e}")
