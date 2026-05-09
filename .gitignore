@@ -1,0 +1,10 @@
+.env
+client_secrets.json
+youtube_token.json
+data/
+models/
+logs/
+__pycache__/
+*.pyc
+*.wav
+*.mp4
