@@ -24,8 +24,7 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 GROQ_API_URL   = "https://api.groq.com/openai/v1/chat/completions"
 OLLAMA_API_URL = "http://localhost:11434/api/chat"
-# Modelos disponibles en Groq (llama-3.1-70b-versatile fue descontinuado)
-GROQ_MODEL     = "mixtral-8x7b-32768"  # Rápido y confiable
+GROQ_MODEL     = "llama-3.3-70b-versatile"  # Modelo actual soportado
 OLLAMA_MODEL   = "llama3.1:8b"
 
 
